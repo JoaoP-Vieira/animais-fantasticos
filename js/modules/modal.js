@@ -1,21 +1,19 @@
 export default class Modal {
-  constructor(open, close, container) {
-    this.open = document.querySelector(open);
-    this.close = document.querySelector(close);
-    this.container = document.querySelector(container);
-
+  constructor(botaoAbrir, botaoFechar, containerModal) {
+    this.botaoAbrir = document.querySelector(botaoAbrir);
+    this.botaoFechar = document.querySelector(botaoFechar);
+    this.containerModal = document.querySelector(containerModal);
 
     // bind this ao callback para
     // fazer referência ao objeto
     // da classe
-
-    this.eventToggleModal = this.eventToggleModal.bind();
-    this.cliqueForaModal = this.cliqueForaModal.bind();
+    this.eventToggleModal = this.eventToggleModal.bind(this);
+    this.cliqueForaModal = this.cliqueForaModal.bind(this);
   }
 
-  // abre ou fecha ou modal
+  // abre ou fecha o modal
   toggleModal() {
-    this.container.classList.toggle('ativo');
+    this.containerModal.classList.toggle('ativo');
   }
 
   // adiciona o evento de toggle ao modal
@@ -24,23 +22,23 @@ export default class Modal {
     this.toggleModal();
   }
 
-  // fecha o modal ao clicar no lado de fora
+  // fecha o modal ao clicar do lado de fora
   cliqueForaModal(event) {
-    if (event.target === this.container) {
+    if (event.target === this.containerModal) {
       this.toggleModal();
     }
   }
 
   // adiciona os eventos aos elementos do modal
-  addModalEvent() {
-    this.open.addEventListener('click', this.eventToggleModal);
-    this.close.addEventListener('click', this.eventToggleModal);
-    this.container.addEventListener('click', this.cliqueForaModal);
+  addModalEvents() {
+    this.botaoAbrir.addEventListener('click', this.eventToggleModal);
+    this.botaoFechar.addEventListener('click', this.eventToggleModal);
+    this.containerModal.addEventListener('click', this.cliqueForaModal);
   }
 
   init() {
-    if (this.open && this.close && this.container) {
-      this.addModalEvent();
+    if (this.botaoAbrir && this.botaoFechar && this.containerModal) {
+      this.addModalEvents();
     }
     return this;
   }
