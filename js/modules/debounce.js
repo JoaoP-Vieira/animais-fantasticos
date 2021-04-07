@@ -5,6 +5,6 @@ export default function debounce(callback, delay) {
     timer = setTimeout(() => {
       callback(...args);
       timer = null;
-    }, delay)
-  }
+    }, delay);
+  };
 }

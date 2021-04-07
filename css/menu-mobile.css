@@ -54,3 +54,10 @@
     border: none;
   }
 }
+
+@media (max-width: 700px) {
+  [data-dropdown] .dropdown-menu {
+    display: block;
+    animation: show-up .3s forwards;
+  }
+}
