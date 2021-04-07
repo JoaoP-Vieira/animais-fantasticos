@@ -46,9 +46,9 @@ export default class AnimaNumeros {
   }
 
   init() {
-    if(this.numeros.length && this.observerTarget && this.observerClass) {
-      this.addMutationObserver()
+    if (this.numeros.length && this.observerTarget && this.observerClass) {
+      this.addMutationObserver();
     }
-    return this
+    return this;
   }
 }
